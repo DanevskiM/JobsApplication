@@ -15,5 +15,6 @@ namespace JobsApplication.Domain.DomainModels
         public string? PhoneNumber { get; set; }
         public ICollection<Application>? Applications { get; set; }
         public string FullName => $"{FirstName} {LastName}";
+        public ICollection<CandidateInProfession> CandidateInProfessions { get; set; }
     }
 }

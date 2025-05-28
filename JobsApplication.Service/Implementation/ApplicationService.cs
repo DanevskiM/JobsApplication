@@ -52,8 +52,12 @@ namespace JobsApplication.Service.Implementation
 
         public Application DeleteById(Guid id)
         {
-            // TODO: Implement method
-            throw new NotImplementedException();
+            var application = GetById(id);
+            if (application==null)
+            {
+                throw new Exception("Application not found");
+            }
+            return _applicationRepository.Delete(application);
         }
 
     }

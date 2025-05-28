@@ -5,9 +5,9 @@
 }
 
 <h1>Index</h1>
-
-<!-- TODO: Add CreateProfession button (Create method in ProfessionsController) -->
-
+<form asp-action="CreateProfession" method="post">
+    <button type="submit" class="btn btn-primary">CreateProfession</button>
+</form>
 
 <table class="table">
     <thead>
@@ -44,8 +44,9 @@
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
                 <td>
-                    <!-- TODO: Add delete button -->
-
+                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Are you sure?');" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </td>
             </tr>
         }

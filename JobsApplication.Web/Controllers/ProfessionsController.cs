@@ -1,6 +1,7 @@
 ﻿using JobsApplication.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace JobsApplication.Web.Controllers
 {
@@ -19,18 +20,17 @@ namespace JobsApplication.Web.Controllers
         [Authorize]
         public IActionResult Create()
         {
-            // TODO: Implement method
-            // Get current user, call service method, redirect to Details
-            throw new NotImplementedException();
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var profession = _professionService.Create(userId);
+            return RedirectToAction(nameof(Details), new { id=profession.Id });
         }
-
-
-        // Bonus task
         // GET: Professions/Details/5
         public IActionResult Details(Guid id)
         {
-            // TODO: Implement method
-            throw new NotImplementedException();
+            var profession = _professionService.GetDetailsById(id);
+            if (profession == null)
+                return NotFound();
+            return View(profession);
         }
     }
 }

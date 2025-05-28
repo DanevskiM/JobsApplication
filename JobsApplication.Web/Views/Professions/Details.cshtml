@@ -6,16 +6,26 @@
 
 <h1>Details</h1>
 <h4>Profession</h4>
-
-<!-- TODO: Create Table for Profession -->
-<!-- Look at the table from any Index page for help -->
-<!-- Iterate throught Model.CandidatedInProfession -->
-<!-- Display: Candidate FullName, Candidate DateOfBirth, Candidate PhoneNumber -->
 <table class="table">
-   
+    <thead>
+        <tr>
+            <th>FullName</th>
+            <th>DateOfBirth</th>
+            <th>PhoneNumber</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.CandidateInProfessions)
+        {
+            <tr>
+                <td>@(item.Candidate.FirstName + " " + item.Candidate.LastName)</td>
+                <td>@item.Candidate.DateOfBirth</td>
+                <td>@item.Candidate.PhoneNumber</td>
+            </tr>
+        }
+    </tbody>
 </table>
-
-<!-- TODO: Display Total Number of Candidates In Profession-->
 <div>
     <p>Total Candidates: </p>
+    @Model.CandidateInProfessions.Sum(x => x.Quantity);
 </div>

@@ -52,8 +52,14 @@ namespace JobsApplication.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(Guid id)
         {
-            // TODO: implement method
-            throw new NotImplementedException();
+            if (id == null)
+                return NotFound();
+            var application = _applicationService.GetById(id);
+            if (application!=null)
+            {
+                _applicationService.DeleteById(id);
+            }
+            return RedirectToAction(nameof(Index));
         }
 
     }
