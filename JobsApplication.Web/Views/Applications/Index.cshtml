@@ -1,0 +1,53 @@
+﻿@model IEnumerable<JobsApplication.Domain.DomainModels.Application>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<!-- TODO: Add CreateProfession button (Create method in ProfessionsController) -->
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobPosition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Candidate.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobPosition.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Owner.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <!-- TODO: Add delete button -->
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
